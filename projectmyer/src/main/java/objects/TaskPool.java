@@ -12,14 +12,16 @@ public class TaskPool {
     //percentage out of hundred
     private int completionPercent;
     private LocalDateTime  completionDateTime;
+    private boolean isOrdered;
 
     //Constructors
     public TaskPool() {
     }
-    public TaskPool(HashMap<Integer,SingleTask> singleTaskList, int completionPercent, LocalDateTime completionDateTime) {
+    public TaskPool(HashMap<Integer,SingleTask> singleTaskList, int completionPercent, LocalDateTime completionDateTime, boolean isOrdered) {
         this.singleTaskList = singleTaskList;
         this.completionPercent = completionPercent;
         this.completionDateTime = completionDateTime;
+        this.isOrdered = isOrdered;
     }
 
     //Methods
@@ -41,7 +43,6 @@ public class TaskPool {
     public void addSingleTask(HashMap<Integer,SingleTask> taskHashMap){
         singleTaskList.putAll(taskHashMap);
     }
-
 
     //total amount of task
     public int totalSingleTasks(){
@@ -74,5 +75,12 @@ public class TaskPool {
     }
     public void setCompletionDateTime(LocalDateTime completionDateTime) {
         this.completionDateTime = completionDateTime;
+    }
+
+    public boolean isOrdered() {
+        return isOrdered;
+    }
+    public void setOrdered(boolean ordered) {
+        isOrdered = ordered;
     }
 }
