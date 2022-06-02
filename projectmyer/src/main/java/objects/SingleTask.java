@@ -14,7 +14,7 @@ public class SingleTask {
     //Constructors
     public SingleTask(){
     }
-    public SingleTask(int taskId, String taskName, boolean isCompleted, boolean hasDueDate, LocalDate LocalDate) {
+    public SingleTask(int taskId, String taskName, boolean isCompleted, boolean hasDueDate, LocalDate dueDate) {
         this.taskId = taskId;
         this.taskName = taskName;
         this.isCompleted = isCompleted;

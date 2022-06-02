@@ -2,22 +2,22 @@ package objects;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 public class TaskPool {
 
     //Instance Variables
-    private HashMap<Integer,SingleTask> singleTaskList;
+    private List<SingleTask> singleTaskList;
     //percentage out of hundred
     private int completionPercent;
+
     private LocalDateTime  completionDateTime;
     private boolean isOrdered;
 
     //Constructors
     public TaskPool() {
     }
-    public TaskPool(HashMap<Integer,SingleTask> singleTaskList, int completionPercent, LocalDateTime completionDateTime, boolean isOrdered) {
+    public TaskPool(List<SingleTask> singleTaskList, int completionPercent, LocalDateTime completionDateTime, boolean isOrdered) {
         this.singleTaskList = singleTaskList;
         this.completionPercent = completionPercent;
         this.completionDateTime = completionDateTime;
@@ -28,8 +28,8 @@ public class TaskPool {
 
     //remove task
     public void removeTask(int taskId){
-        for(Map.Entry<Integer,SingleTask> singleTask : singleTaskList.entrySet()) {
-            if(singleTask.getKey().equals(taskId)){
+        for(SingleTask singleTask : singleTaskList) {
+            if(singleTask.getTaskId() == (taskId)){
                 singleTaskList.remove(taskId);
             }
         }
@@ -37,11 +37,11 @@ public class TaskPool {
 
     //add one task
     public void addSingleTask(SingleTask singleTask){
-        singleTaskList.put(singleTask.getTaskId(), singleTask);
+        singleTaskList.add(singleTask);
     }
     //add many task
-    public void addSingleTask(HashMap<Integer,SingleTask> taskHashMap){
-        singleTaskList.putAll(taskHashMap);
+    public void addSingleTask(List<SingleTask> taskHashMap){
+        singleTaskList.addAll(taskHashMap);
     }
 
     //total amount of task
@@ -49,20 +49,19 @@ public class TaskPool {
         return singleTaskList.size();
     }
 
-
     //Getters Setters
-    public HashMap<Integer,SingleTask> getSingleTaskList() {
+    public List<SingleTask> getSingleTaskList() {
         return singleTaskList;
     }
-    public void setSingleTaskList(HashMap<Integer,SingleTask> singleTaskList) {
+    public void setSingleTaskList(List<SingleTask> singleTaskList) {
         this.singleTaskList = singleTaskList;
     }
 
     //acts as refresh to percentage with each method call
     public int getCompletionPercent() {
         int completedTasks = 0;
-        for(Map.Entry<Integer,SingleTask> singleTask : singleTaskList.entrySet()) {
-            if(singleTask.getValue().isCompleted()){
+        for(SingleTask singleTask : singleTaskList) {
+            if(singleTask.isCompleted()){
                 completedTasks++;
             }
         }
