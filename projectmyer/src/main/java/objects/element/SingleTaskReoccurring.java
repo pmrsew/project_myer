@@ -1,9 +1,11 @@
-package objects;
+package objects.element;
+
+import objects.element.SingleTask;
 
 import java.time.LocalDate;
 
 //reoccurring tasks that happen on a schedule
-public class SingleTaskReoccurring extends SingleTask{
+public class SingleTaskReoccurring extends SingleTask implements Element{
 
     //Instance Variables
     private String intervalLabel;

@@ -1,8 +1,8 @@
-package objects;
+package objects.element;
 
 import java.time.LocalDate;
 
-public class SingleTask {
+public class SingleTask implements Element{
 
     //Instance Variables
     private int taskId;
@@ -10,6 +10,7 @@ public class SingleTask {
     private boolean isCompleted;
     private boolean hasDueDate;
     private LocalDate dueDate;
+    private final static String ELEMENT_VALUE = "TASK";
 
     //Constructors
     public SingleTask(){
@@ -23,6 +24,15 @@ public class SingleTask {
     }
 
     //Methods
+    @Override
+    public int getElementId() {
+        return taskId;
+    }
+
+    @Override
+    public String getElementType() {
+        return ELEMENT_VALUE;
+    }
 
 
     public void trackTask(){
@@ -65,4 +75,7 @@ public class SingleTask {
     public void setDueDate(LocalDate dueDate) {
         this.dueDate = dueDate;
     }
+
+
+
 }

@@ -1,36 +1,39 @@
-package objects;
+package objects.daily;
 
 //list of daily single objects
 //randomization happens here
 //make generate pool?
 
+
+//TODO This class extends from TemplatePool. Make use of Element!
+
+import objects.template.TemplatePool;
+
 import java.time.LocalDate;
 import java.util.List;
 
-public class DailyPool {
+public class DailyPool extends TemplatePool {
 
-    private int id;
-    private String name;
-    private List<DailyObject> dailyObjects;
     private LocalDate dateCreated;
-    private LocalDate dateSumbitted;
+    private LocalDate dateLastChange;
     private LocalDate poolStartDate;
     private boolean sameDay;
     private LocalDate poolEndDate;
     private String status; //in progress, skipped, submitted, changed
 
-    //daily pool object
-    //contains zero to many daily objects
-
+    //manual make
     public DailyPool(int id, String name) {
-        this.name = name;
-        this.id = id;
+        super(id, name);
     }
 
+    //made from template
+    public DailyPool(TemplatePool template){
+        super(template.getId(),template.getName());
+    }
 
     //add dpo
     public void addDailyObject(DailyObject dailyObject){
-        dailyObjects.add(dailyObject);
+        this.getDailyObjects().add(dailyObject);
     }
     public void addAllDailyObjects(List<DailyObject> dailyObjects){
         dailyObjects.addAll(dailyObjects);
@@ -38,7 +41,7 @@ public class DailyPool {
 
     //clear
     public void clearDailyObject(DailyObject dailyObject){
-        dailyObjects.clear();
+        this.getDailyObjects().clear();
     }
 
     //generate dailytaskpool list, returns new dailytaskpool
@@ -47,14 +50,14 @@ public class DailyPool {
 
     //clear complete
     public void clearCompletedSingleTasks(){
-        for(DailyObject dailyObject: dailyObjects){
+        for(DailyObject dailyObject: this.getDailyObjects()){
             dailyObject.clearCompletion();
         }
     }
 
     //complete all
     public void completeAllSingleTasks(){
-        for(DailyObject dailyObject: dailyObjects){
+        for(DailyObject dailyObject: this.getDailyObjects()){
             dailyObject.completeAll();
         }
     }
@@ -62,26 +65,4 @@ public class DailyPool {
     //save progress
     //    used to transfer statistics
     //    confirm completion of tasks
-
-    //Getters Setters
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<DailyObject> getDailyObjects() {
-        return dailyObjects;
-    }
-    public void setDailyObjects(List<DailyObject> dailyObjects) {
-        this.dailyObjects = dailyObjects;
-    }
 }

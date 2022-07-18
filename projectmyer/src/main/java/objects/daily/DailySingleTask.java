@@ -1,4 +1,6 @@
-package objects;
+package objects.daily;
+
+import objects.element.SingleTask;
 
 public class DailySingleTask extends DailyObject {
 
@@ -8,7 +10,7 @@ public class DailySingleTask extends DailyObject {
 
     public DailySingleTask(int id, String name, SingleTask singleTask) {
         super(id, name);
-        setDailyObjectLabel(DAILY_OBJECT_LABEL);
+        setElementLabel(DAILY_OBJECT_LABEL);
         this.singleTask = singleTask;
     }
 

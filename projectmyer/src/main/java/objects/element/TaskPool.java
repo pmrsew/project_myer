@@ -1,10 +1,9 @@
-package objects;
+package objects.element;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class TaskPool {
+public class TaskPool implements Element{
 
     //Instance Variables
     private List<SingleTask> singleTaskList;
@@ -13,6 +12,7 @@ public class TaskPool {
 
     private LocalDateTime  completionDateTime;
     private boolean isOrdered;
+    private final static String ELEMENT_VALUE = "POOL";
 
     //Constructors
     public TaskPool() {
@@ -26,6 +26,15 @@ public class TaskPool {
 
     //Methods
 
+    @Override
+    public int getElementId() {
+        return 0;
+    }
+
+    @Override
+    public String getElementType() {
+        return ELEMENT_VALUE;
+    }
     //remove task
     public void removeTask(int taskId){
         for(SingleTask singleTask : singleTaskList) {
@@ -98,4 +107,7 @@ public class TaskPool {
     public void setOrdered(boolean ordered) {
         isOrdered = ordered;
     }
+
+
+
 }

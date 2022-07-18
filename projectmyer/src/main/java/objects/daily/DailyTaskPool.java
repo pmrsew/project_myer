@@ -1,6 +1,9 @@
-package objects;
+package objects.daily;
 
-public class DailyTaskPool extends DailyObject{
+import objects.element.TaskPool;
+import objects.element.SingleTask;
+
+public class DailyTaskPool extends DailyObject {
 
     private TaskPool taskPool;
     private int taskPoolLimit;
@@ -11,7 +14,7 @@ public class DailyTaskPool extends DailyObject{
 
         this.taskPool = taskPool;
         this.taskPoolLimit = taskPoolLimit;
-        setDailyObjectLabel(DAILY_OBJECT_LABEL);
+        setElementLabel(DAILY_OBJECT_LABEL);
     }
 
     public TaskPool getTaskPool() {
