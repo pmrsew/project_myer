@@ -40,3 +40,4 @@
 #### Functions to add later:
 * Integrated food menu options that pull from a pool
 * Habit tracking (mark single tasks as habits to be tracked)
+* Events attached to stores will pull from store specific lists
