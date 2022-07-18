@@ -49,6 +49,22 @@ public class TaskPool {
         return singleTaskList.size();
     }
 
+    //check all tasks
+    public void checkAllTasks(){
+        for(SingleTask singleTask: singleTaskList){
+            singleTask.setCompleted(true);
+        }
+    }
+
+    //uncheck all tasks
+    public void uncheckAllTasks(){
+        for(SingleTask singleTask: singleTaskList){
+            singleTask.setCompleted(false);
+        }
+    }
+
+
+
     //Getters Setters
     public List<SingleTask> getSingleTaskList() {
         return singleTaskList;

@@ -4,6 +4,7 @@ package objects;
 //randomization happens here
 //make generate pool?
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class DailyPool {
@@ -11,6 +12,12 @@ public class DailyPool {
     private int id;
     private String name;
     private List<DailyObject> dailyObjects;
+    private LocalDate dateCreated;
+    private LocalDate dateSumbitted;
+    private LocalDate poolStartDate;
+    private boolean sameDay;
+    private LocalDate poolEndDate;
+    private String status; //in progress, skipped, submitted, changed
 
     //daily pool object
     //contains zero to many daily objects
